@@ -21,6 +21,7 @@ function Login() {
 
   const handleLogin = async  (event) => {
     event.preventDefault();
+
     console.log({ email: email, password: password });
 
     const loginValidity = validateEmailAndPassword(email, password);
@@ -44,22 +45,59 @@ function Login() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen gap-3">
+    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
+      <form onSubmit={handleLogin}>
+
+      <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
-      />
+        className="w-full px-3 py-2 mb-4 border rounded"
+        />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
-      />
-      <button onClick={handleLogin}>Login</button>
-      <button onClick={gotoSignupPage}>Signup</button>
+        className="w-full px-3 py-2 mb-4 border rounded"
+        />
+      <button
+        onClick={handleLogin}
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full font-bold"
+        >
+        Login
+      </button>
+      <p className="mt-4 text-center">
+        Don't have an account?{" "}
+        <button
+          onClick={gotoSignupPage}
+          className="text-blue-600 hover:underline"
+          >
+          Sign up
+        </button>
+      </p>
+      </form>
     </div>
+  </div>
+    // <div className="flex flex-col justify-center items-center h-screen gap-3">
+    //   <input
+    //     type="email"
+    //     value={email}
+    //     onChange={(e) => setEmail(e.target.value)}
+    //     placeholder="Email"
+    //   />
+    //   <input
+    //     type="password"
+    //     value={password}
+    //     onChange={(e) => setPassword(e.target.value)}
+    //     placeholder="Password"
+    //   />
+    //   <button onClick={handleLogin}>Login</button>
+    //   <button onClick={gotoSignupPage}>Signup</button>
+    // </div>
   );
 }
 
